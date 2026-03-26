@@ -43,41 +43,39 @@ function FloatingTorus({ position, color, speed }) {
 function ParticleField() {
   const ref = useRef();
   const count = 800;
-
+  
   const positions = useMemo(() => {
-    const arr = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * 20;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 14;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 8 - 3;
-    }
-    return arr;
-  }, []);
+  const arr = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    arr[i * 3] = (Math.random() - 0.5) * 20;
+    arr[i * 3 + 1] = (Math.random() - 0.5) * 14;
+    arr[i * 3 + 2] = (Math.random() - 0.5) * 8 - 3;
+  }
+  return arr;
+}, []);
 
-  useFrame(({ clock }) => {
-    ref.current.rotation.y = clock.getElapsedTime() * 0.04;
-  });
+useFrame(({ clock }) => {
+  ref.current.rotation.y = clock.getElapsedTime() * 0.04;
+});
 
-  return (
-    <points ref={ref}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
-      <pointsMaterial color="#00f5ff" size={0.04} opacity={0.35} transparent />
-    </points>
-  );
+return (
+  <points ref={ref}>
+    <bufferGeometry>
+      <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+    </bufferGeometry>
+    <pointsMaterial color="#00f5ff" size={0.04} opacity={0.35} transparent />
+  </points>
+);
 }
 
 function DistortionRing({ radius, color, speed, axis }) {
   const ref = useRef();
-
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime() * speed;
     if (axis === 'x') ref.current.rotation.x = t;
     if (axis === 'y') ref.current.rotation.y = t;
     if (axis === 'z') ref.current.rotation.z = t;
   });
-
   return (
     <mesh ref={ref}>
       <torusGeometry args={[radius, 0.008, 4, 80]} />
