@@ -58,10 +58,10 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="font-orbitron text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight"
         >
-          Creative
+          WEB
           <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-cyan-400" style={{ WebkitTextFillColor: 'transparent', WebkitBackgroundClip: 'text', backgroundSize: '200% auto', animation: 'gradient 4s linear infinite' }}>
-            Developer
+            DEVELOPER
           </span>
         </motion.h1>
 
