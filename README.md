@@ -32,32 +32,48 @@ Welcome to the digital realm of **Satyam**. This isn't just a portfolio; it's a 
 
 ## 📂 Project Structure
 
-```text
+```bash
 Portfolio-Website/
+│
 ├── src/
-│   ├── api/             # API clients & configuration
-│   ├── components/      
-│   │   ├── portfolio/   # Core Portfolio Components (Hero, WebGL, Scenes)
-│   │   └── ui/          # Atomic Shadcn/UI Components
-│   ├── hooks/           # Custom React hooks (ScrollReveal, Mobile detection)
-│   ├── lib/             # Context Providers & Utility functions
-│   ├── pages/           # Main entry views
-│   ├── utils/           # Type definitions & helper scripts
-│   ├── App.jsx          # Root Layout & Animation Logic
-│   └── index.css        # Global styles & keyframe animations
-└── tailwind.config.js   # Custom theme & glow effect configurations
+│   ├── api/           # API clients & configuration
+│   ├── components/
+│   │   ├── portfolio/ # Core Portfolio Components (Hero, WebGL, etc.)
+│   │   └── ui/        # Atomic Shadcn/UI Components
+│   ├── hooks/         # Custom React hooks (ScrollReveal, Mobile)
+│   ├── lib/           # Context Providers & Utility functions
+│   ├── pages/         # Main entry views
+│   ├── utils/         # Type definitions & helper scripts
+│   ├── App.jsx        # Root Layout & Animation Logic
+│   ├── index.css      # Global styles & keyframe animations
+│
+├── tailwind.config.js # Custom theme & glow effect configurations
+```
 
-🚀 Getting Started
-Follow these steps to run the project locally on your machine or in Termux:
- * Clone the repository:
-   git clone [https://github.com/satyam-devx/Portfolio-Website.git](https://github.com/satyam-devx/Portfolio-Website.git)
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally:
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/satyam-devx/Portfolio-Website.git
 cd Portfolio-Website
+```
 
- * Install dependencies:
-   npm install
+### 2️⃣ Install dependencies
 
- * Launch the development server:
-   npm run dev
+```bash
+npm install
+```
+
+### 3️⃣ Run development server
+
+```bash
+npm run dev
+```
 
 👨‍💻 About The Developer
 I am Satyam Kumar Jha, a Creative Developer dedicated to pushing the boundaries of the web. I build high-performance applications with a focus on visual storytelling and technical excellence.
