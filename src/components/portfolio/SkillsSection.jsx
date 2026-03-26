@@ -7,40 +7,40 @@ const skillGroups = [
     color: '#00f5ff',
     skills: [
       { name: 'HTML5 / CSS3', level: 95 },
-      { name: 'Tailwind CSS', level: 90 },
+      { name: 'Tailwind CSS', level: 92 },
       { name: 'JavaScript ES6+', level: 90 },
-      { name: 'React.js', level: 85 },
+      { name: 'React.js', level: 88 },
       { name: 'Next.js', level: 82 },
-    ]
+    ],
   },
   {
     category: 'Backend',
-    color: '#b955e5',
+    color: '#9b5de5',
     skills: [
       { name: 'Node.js', level: 85 },
-      { name: 'Express.js', level: 80 },
+      { name: 'Express.js', level: 83 },
       { name: 'REST APIs', level: 88 },
-    ]
+    ],
   },
   {
     category: 'Database',
-    color: '#ff5544',
+    color: '#4361ee',
     skills: [
       { name: 'MongoDB', level: 80 },
-      { name: 'Firebase', level: 75 },
-    ]
+      { name: 'Firebase', level: 78 },
+    ],
   },
   {
     category: 'Creative Tech',
-    color: '#ff2555',
+    color: '#f72585',
     skills: [
       { name: 'Three.js / R3F', level: 75 },
       { name: 'Framer Motion', level: 85 },
       { name: 'GSAP + ScrollTrigger', level: 72 },
       { name: 'WebGL / GLSL', level: 65 },
       { name: 'AI API Integration', level: 80 },
-    ]
-  }
+    ],
+  },
 ];
 
 function SkillBar({ name, level, color, index }) {
@@ -48,10 +48,7 @@ function SkillBar({ name, level, color, index }) {
   const ref = useRef(null);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) setAnimated(true);
-    }, { threshold: 0.5 });
-    
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setAnimated(true); }, { threshold: 0.5 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
@@ -77,7 +74,7 @@ function SkillBar({ name, level, color, index }) {
           className="h-full rounded-full relative"
           style={{ background: `linear-gradient(90deg, ${color}50, ${color})` }}
         >
-          <div 
+          <div
             className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full"
             style={{ background: color, boxShadow: `0 0 8px ${color}, 0 0 16px ${color}60` }}
           />
@@ -97,9 +94,9 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="relative py-36 px-6">
       <div className="absolute left-0 top-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
-           style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.04) 0%, transparent 70%)', filter: 'blur(80px)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.04) 0%, transparent 70%)', filter: 'blur(80px)' }} />
       <div className="absolute right-0 bottom-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
-           style={{ background: 'radial-gradient(circle, rgba(185,85,229,0.04) 0%, transparent 70%)', filter: 'blur(80px)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(155,93,229,0.04) 0%, transparent 70%)', filter: 'blur(80px)' }} />
 
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -108,8 +105,10 @@ export default function SkillsSection() {
           transition={{ duration: 0.6 }}
           className="flex items-center gap-4 mb-16"
         >
-          <span className="font-mono text-xs text-cyan-400 tracking-widest uppercase">Skills</span>
+          <span className="font-mono text-xs text-cyan-400 tracking-widest">//</span>
+          <span className="font-mono text-xs text-cyan-400/60 tracking-widest uppercase">Skills</span>
           <div className="flex-1 h-px bg-gradient-to-r from-cyan-400/20 to-transparent" />
+          <span className="font-mono text-xs text-white/20">02</span>
         </motion.div>
 
         <motion.h2
@@ -120,16 +119,16 @@ export default function SkillsSection() {
         >
           My <span className="gradient-text">Arsenal</span>
         </motion.h2>
-        
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="font-space text-white/50 mb-16 max-w-xl"
+          className="font-space text-white/35 mb-16 max-w-xl"
         >
           Tools I've mastered and continuously push further — each one wielded with purpose.
         </motion.p>
 
+        {/* Skill bars grid */}
         <div className="grid md:grid-cols-2 gap-8 mb-20">
           {skillGroups.map((group, gi) => (
             <motion.div
@@ -137,14 +136,15 @@ export default function SkillsSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: gi * 0.1, duration: 0.7 }}
-              className="glass-card rounded-3xl p-7 relative overflow-hidden group"
+              className="glass-card rounded-2xl p-7 relative overflow-hidden group"
             >
+            {/* Corner accent */}
               <div className="absolute top-0 right-0 w-24 h-24 opacity-10 pointer-events-none"
-                   style={{ background: `radial-gradient(circle at top right, ${group.color}, transparent)` }} />
-              
+                style={{ background: `radial-gradient(circle at top right, ${group.color}, transparent)` }} />
+
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-2 h-2 rounded-full" style={{ background: group.color, boxShadow: `0 0 8px ${group.color}` }} />
-                <span className="font-orbitron text-sm tracking-[0.2em] font-bold" style={{ color: group.color }}>
+                <span className="font-orbitron text-xs tracking-[0.2em] font-bold" style={{ color: group.color }}>
                   {group.category.toUpperCase()}
                 </span>
               </div>
@@ -158,18 +158,19 @@ export default function SkillsSection() {
           ))}
         </div>
 
+        {/* Tech tag cloud – magnetic hover */}
         <div className="flex flex-wrap gap-3 justify-center">
           {techTags.map((tag, i) => (
             <motion.div
               key={tag}
               initial={{ opacity: 0, scale: 0.8, y: 10 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: i * 0.05 }}
+              transition={{ delay: i * 0.03, duration: 0.5 }}
               whileHover={{ scale: 1.15, y: -3 }}
               className="glass-card px-4 py-2 rounded-xl font-mono text-xs text-white/50 hover:text-cyan-400 transition-all duration-300 cursor-default relative overflow-hidden group"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                   style={{ background: 'linear-gradient(135deg, rgba(0,245,255,0.08), rgba(185,85,229,0.05))' }} />
+                style={{ background: 'linear-gradient(135deg, rgba(0,245,255,0.08), rgba(155,93,229,0.05))' }} />
               <span className="relative z-10">{tag}</span>
             </motion.div>
           ))}
