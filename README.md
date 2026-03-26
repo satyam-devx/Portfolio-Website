@@ -1,197 +1,177 @@
-# 🌌 Satyam | Hyper-Visual Portfolio
+🌌 Satyam | Hyper-Visual Portfolio
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+<p align="center">
+  <b>A Next-Gen Interactive Portfolio Experience</b><br/>
+  <i>Where Code Meets Cinematic Reality</i>
+</p><p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
+</p>---
 
-Welcome to the digital realm of **Satyam Kumar Jha**. This isn't just a portfolio; it's a high-performance, interactive 3D experience designed to showcase the intersection of creative design and complex engineering.
+🚀 Overview
 
----
+Welcome to the digital realm of **Satyam.**
+This isn't just a portfolio — it's a high-performance, interactive 3D ecosystem engineered to showcase the fusion of:
 
-## ⚠️ The "Digital Integrity" Version 
-This version is for those who respect professional code and design.
+- 🎨 Creative Design
+- ⚙️ Complex Engineering
+- ⚡ Real-Time Interactivity
 
-⚖️ **Intellectual Property & Usage Notice**
-​This project is a labor of original craft and digital engineering. While the code is open for inspiration, its identity is not.
-
-**​The Following Actions are Strictly Prohibited:**
-**​Mirroring:** Full-scale replication or cloning of the design architecture.
-**​Reskinning:** Reposting with superficial content changes to claim originality.
-**​Commercial Exploitation:** Using this framework for client work or paid projects.
-**​Educational Misuse:** Creating tutorials or derivative content based on this exact blueprint.
-
-​**The Code of Honor:**
-If you incorporate specific logic or snippets, explicit attribution and a link back to the original repository are mandatory.
-
-**​"Inspiration is free; Originality is earned. Build your own legacy—don't just shadow mine."**
-​
- — Satyam Kumar Jha
-
- ---
-
-## ✨ Key Features
-
-- 🎭 **Interactive 3D Backgrounds:** Powered by **Three.js** and **WebGL** for a deeply immersive experience.
-- 🧪 **Particle Name Hero:** A custom-built Canvas engine that turns text into interactive particles that react to your mouse.
-- ⚡ **Ultra-Smooth Animations:** Seamless transitions and scroll-triggered effects using **Framer Motion**.
-- 📱 **Fully Responsive:** Perfectly optimized for everything from ultra-wide monitors to high-end smartphones.
-- 🌑 **Cyberpunk Aesthetic:** A sleek, glassmorphic dark-mode UI with cyan and purple neon accents.
+«"This is not a website. It's an experience."»
 
 ---
 
-## 🛠️ Tech Stack
+⚠️ Digital Integrity Protocol
 
-- **Frontend:** React.js, Vite
-- **Styling:** Tailwind CSS (Custom Glassmorphism)
-- **3D/Graphics:** Three.js, WebGL, HTML5 Canvas
-- **Motion:** Framer Motion, Lucide Icons
-- **Deployment:** Vercel / GitHub Pages
+«⚖️ Intellectual Property & Usage Notice»
+
+This project represents original craftsmanship and engineering precision.
+
+🚫 Strictly Prohibited
+
+- ❌ Full cloning / mirroring of design
+- ❌ Reskinning for fake originality
+- ❌ Commercial usage for clients/projects
+- ❌ Tutorials or derivative content based on this exact build
+
+✅ Code of Honor
+
+- ✔️ You may take inspiration
+- ✔️ You may reuse logic (with credit)
+- ✔️ You must give proper attribution
+
+«"Inspiration is free; Originality is earned."
+— Satyam Kumar Jha»
 
 ---
 
-## 📂 Project Structure
+✨ Core Features
 
-bash
+🎭 Interactive 3D Layer
+
+- Real-time WebGL rendering using Three.js
+- Dynamic depth + immersive background
+
+🧪 Particle Name Engine
+
+- Custom-built Canvas system
+- Text → Interactive particles
+- Mouse-reactive physics
+
+⚡ Motion System
+
+- Powered by Framer Motion
+- Smooth transitions + scroll-trigger animations
+
+📱 Fully Responsive System
+
+- Works seamlessly across:
+  - Desktop 💻
+  - Tablet 📱
+  - Mobile 📲
+
+🌑 Cyberpunk UI
+
+- Glassmorphism + Neon effects
+- Cyan & Purple aesthetic
+- Futuristic typography
+
+---
+
+🛠️ Tech Stack
+
+Layer| Technology
+Frontend| React.js, Vite
+Styling| Tailwind CSS (Glassmorphism UI)
+3D Engine| Three.js, WebGL, Canvas
+Animations| Framer Motion
+Icons| Lucide React
+Deployment| Vercel / GitHub Pages
+
+---
+
+📂 Project Architecture
+
 Portfolio-Website/
-│
-├── public/
-│
 ├── src/
-│   │
-│   ├── api/
-│   │   └── base44Client.js
-│   │
-│   ├── components/
-│   │   │
-│   │   ├── portfolio/
-│   │   │   ├── AboutSection.jsx
-│   │   │   ├── ContactSection.jsx
-│   │   │   ├── CustomCursor.jsx
-│   │   │   ├── FloatingObjects.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   ├── GoalSection.jsx
-│   │   │   ├── HeroSection.jsx
-│   │   │   ├── LoadingScreen.jsx
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── ParticleBackground.jsx
-│   │   │   ├── ParticleName.jsx
-│   │   │   ├── ProjectsSection.jsx
-│   │   │   ├── Scene3D.jsx
-│   │   │   ├── SkillsSection.jsx
-│   │   │   ├── SmoothScroller.jsx
-│   │   │   └── WebGLBackground.jsx
-│   │   │
-│   │   └── ui/
-│   │       ├── accordion.jsx
-│   │       ├── alert-dialog.jsx
-│   │       ├── alert.jsx
-│   │       ├── aspect-ratio.jsx
-│   │       ├── avatar.jsx
-│   │       ├── badge.jsx
-│   │       ├── breadcrumb.jsx
-│   │       ├── button.jsx
-│   │       ├── calendar.jsx
-│   │       ├── card.jsx
-│   │       ├── carousel.jsx
-│   │       ├── chart.jsx
-│   │       ├── checkbox.jsx
-│   │       ├── collapsible.jsx
-│   │       ├── command.jsx
-│   │       ├── context-menu.jsx
-│   │       ├── dialog.jsx
-│   │       ├── drawer.jsx
-│   │       ├── dropdown-menu.jsx
-│   │       ├── form.jsx
-│   │       ├── hover-card.jsx
-│   │       ├── input-otp.jsx
-│   │       ├── input.jsx
-│   │       ├── label.jsx
-│   │       ├── menubar.jsx
-│   │       ├── navigation-menu.jsx
-│   │       ├── pagination.jsx
-│   │       ├── popover.jsx
-│   │       ├── progress.jsx
-│   │       ├── radio-group.jsx
-│   │       ├── resizable.jsx
-│   │       ├── scroll-area.jsx
-│   │       ├── select.jsx
-│   │       ├── separator.jsx
-│   │       ├── sheet.jsx
-│   │       ├── sidebar.jsx
-│   │       ├── skeleton.jsx
-│   │       ├── slider.jsx
-│   │       ├── sonner.jsx
-│   │       ├── switch.jsx
-│   │       ├── table.jsx
-│   │       ├── tabs.jsx
-│   │       ├── textarea.jsx
-│   │       ├── toast.jsx
-│   │       ├── toaster.jsx
-│   │       ├── toggle-group.jsx
-│   │       ├── toggle.jsx
-│   │       ├── tooltip.jsx
-│   │       └── use-toast.js
-│   │
-│   ├── hooks/
-│   │   ├── use-mobile.jsx
-│   │   └── useScrollReveal.js
-│   │
-│   ├── lib/
-│   │   ├── app-params.js
-│   │   ├── AuthContext.jsx
-│   │   ├── PageNotFound.jsx
-│   │   ├── query-client.js
-│   │   └── utils.js
-│   │
-│   ├── pages/
-│   │   └── Portfolio.jsx
-│   │
-│   ├── utils/
-│   │   └── index.ts
-│   │
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-│
-├── .gitignore
-├── components.json
-├── eslint.config.js
-├── index.html
-├── jsconfig.json
-├── package.json
-├── postcss.config.js
-├── README.md
-├── tailwind.config.js
-└── vite.config.js
+│   ├── api/             # API clients & configuration
+│   ├── components/      
+│   │   ├── portfolio/   # Core Portfolio Components (Hero, WebGL, Scenes)
+│   │   └── ui/          # Atomic Shadcn/UI Components
+│   ├── hooks/           # Custom React hooks (ScrollReveal, Mobile detection)
+│   ├── lib/             # Context Providers & Utility functions
+│   ├── pages/           # Main entry views
+│   ├── utils/           # Type definitions & helper scripts
+│   ├── App.jsx          # Root Layout & Animation Logic
+│   └── index.css        # Global styles & keyframe animations
+└── tailwind.config.js   # Custom theme & glow effect configurations
 
 ---
 
-## 🚀 Getting Started
+🚀 Getting Started
 
-Follow these steps to run the project locally on your machine or in Termux:
- * Clone the repository:
-   bash
-   git clone [https://github.com/satyam-devx/Portfolio-Website.git](https://github.com/satyam-devx/Portfolio-Website.git)
+1️⃣ Clone Repository
+
+git clone https://github.com/satyam-devx/Portfolio-Website.git
 cd Portfolio-Website
 
- * Install dependencies:
-   bash
-   npm install
+2️⃣ Install Dependencies
 
- * Launch the development server:
-   bash
-   npm run dev
+npm install
 
-   ---
+3️⃣ Start Development Server
 
-👨‍💻 About The Developer
-I am Satyam Kumar Jha, a Creative Developer dedicated to pushing the boundaries of the web. I build high-performance applications with a focus on visual storytelling and technical excellence.
-> "Code is poetry, but 3D is a lifestyle." — Satyam
-> 
-🤝 Let's Connect
- * GitHub: @satyam-devx
- * LinkedIn: Currently Unavailable.
- * Instagram: @satyamtbh
-⭐️ If you like this project, feel free to give it a star!
+npm run dev
+
+---
+
+🧠 Developer Philosophy
+
+«"I don't just build websites.
+I build experiences that people remember."»
+
+This project reflects:
+
+- Discipline ⚔️
+- Creativity 🎨
+- Engineering mindset ⚙️
+
+---
+
+👨‍💻 About Me
+
+Satyam Kumar Jha
+Creative Developer | Future Engineer
+
+- 🧠 Focus: High-performance web + 3D
+- 🎯 Goal: Build world-class digital experiences
+- ⚡ Vision: Blend logic + art
+
+«"Code is poetry, but 3D is a lifestyle."»
+
+---
+
+🤝 Connect With Me
+
+- 🐙 GitHub → @satyam-devx
+- 📸 Instagram → @satyamtbh
+- 💼 LinkedIn → Coming Soon
+
+---
+
+⭐ Support
+
+If you found this project inspiring:
+
+👉 Give it a ⭐
+👉 Share it
+👉 Build something even better
+
+---
+
+<p align="center">
+  <b>⚡ Built with obsession. Engineered for impact.</b>
+</p>
