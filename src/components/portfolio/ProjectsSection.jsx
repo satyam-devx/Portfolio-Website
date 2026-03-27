@@ -93,7 +93,7 @@ function ProjectCard({ project, index }) {
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="relative py-32 px-6">
+    <section id="projects" className="relative py-32 px-6 scroll-mt-24">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, x: -20 }}

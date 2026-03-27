@@ -69,7 +69,7 @@ export default function ContactSection() {
   const [hovered, setHovered] = useState(null)
 
   return (
-    <section id="contact" className="relative py-36 px-6">
+    <section id="contact" className="relative py-36 px-6 scroll-mt-24">
 
       {/* Glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] blur-3xl pointer-events-none"

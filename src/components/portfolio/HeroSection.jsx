@@ -2,6 +2,20 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Code2, Terminal, Cpu } from 'lucide-react';
 
 export default function HeroSection() {
+
+  // ✅ FIXED SCROLL FUNCTION
+  const handleScrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const top = el.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <section
       id="home"
@@ -84,6 +98,10 @@ export default function HeroSection() {
         >
           <a
             href="#projects"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScrollTo('projects');
+            }}
             className="group relative px-8 py-4 bg-cyan-400 text-black font-orbitron font-bold text-sm tracking-wider overflow-hidden rounded-sm"
           >
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
@@ -95,6 +113,10 @@ export default function HeroSection() {
 
           <a
             href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScrollTo('contact');
+            }}
             className="group px-8 py-4 bg-transparent text-white font-orbitron font-bold text-sm tracking-wider border border-white/20 hover:border-cyan-400 transition-colors duration-300 rounded-sm relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-cyan-400/5 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-in-out" />

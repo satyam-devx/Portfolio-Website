@@ -1,10 +1,12 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function CustomCursor() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [trail, setTrail] = useState([]);
   const [isHovering, setIsHovering] = useState(false);
+  const [ripples, setRipples] = useState([]);
+  const rafRef = useRef();
   const posRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -14,10 +16,17 @@ export default function CustomCursor() {
       setTrail(prev => [...prev.slice(-8), { x: e.clientX, y: e.clientY, id: Date.now() }]);
     };
 
+    const onClick = (e) => {
+      const id = Date.now();
+      setRipples(prev => [...prev, { x: e.clientX, y: e.clientY, id }]);
+      setTimeout(() => setRipples(prev => prev.filter(r => r.id !== id)), 700);
+    };
+
     const handleHover = () => setIsHovering(true);
     const handleLeave = () => setIsHovering(false);
 
     window.addEventListener('mousemove', move);
+    window.addEventListener('click', onClick);
     document.querySelectorAll('a, button, [data-hover]').forEach(el => {
       el.addEventListener('mouseenter', handleHover);
       el.addEventListener('mouseleave', handleLeave);
@@ -25,11 +34,17 @@ export default function CustomCursor() {
 
     return () => {
       window.removeEventListener('mousemove', move);
+      window.removeEventListener('click', onClick);
     };
   }, []);
 
   return (
     <>
+      {/* Click ripples */}
+      {ripples.map(r => (
+        <div key={r.id} className="click-ripple" style={{ left: r.x, top: r.y }} />
+      ))}
+
       {/* Trail dots */}
       {trail.map((t, i) => (
         <div
@@ -40,7 +55,7 @@ export default function CustomCursor() {
             top: t.y,
             width: `${(i + 1) * 1.5}px`,
             height: `${(i + 1) * 1.5}px`,
-            background: `rgba(0, 245, 255, ${(i + 1) * 0.05})`,
+            background: `rgba(0, 245, 255, ${(i + 1) * 0.06})`,
             transform: 'translate(-50%, -50%)',
             transition: 'all 0.1s',
           }}

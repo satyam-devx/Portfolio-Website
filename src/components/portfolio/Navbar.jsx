@@ -1,92 +1,141 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+
+const links = ['Home', 'About', 'Skills', 'Projects', 'AI', 'Journey', 'Contact'];
+const linkIds = { Home: 'home', About: 'about', Skills: 'skills', Projects: 'projects', AI: 'ai', Journey: 'journey', Contact: 'contact' };
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('Home');
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+
+    // 🔥 NEW: update active link on scroll
+    const handleActiveOnScroll = () => {
+      links.forEach((link) => {
+        const id = linkIds[link];
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            setActive(link);
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', handleActiveOnScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', handleActiveOnScroll);
+    };
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
-  ];
+  const scrollTo = (id) => {
+    const targetId = linkIds[id] || id.toLowerCase();
+    const el = document.getElementById(targetId);
+
+    // 🔥 FIX: smooth scroll with offset for navbar
+    if (el) {
+      const yOffset = -80; 
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
+      });
+    }
+
+    setActive(id);
+    setMobileOpen(false);
+  };
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/50 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'py-3' : 'py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+      <div className={`mx-auto max-w-6xl px-6 flex items-center justify-between transition-all duration-500 ${
+        scrolled ? 'glass rounded-2xl py-3 px-6' : ''
+      }`}>
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 group">
-          <Code2 size={24} className="text-cyan-400 group-hover:rotate-12 transition-transform" />
-          <span className="font-orbitron font-bold text-xl tracking-wider text-white">
-            SATYAM<span className="text-cyan-400">.</span>
-          </span>
-        </a>
-
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="font-space text-sm text-white/70 hover:text-cyan-400 transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            className="px-5 py-2 border border-cyan-400/50 text-cyan-400 rounded-sm font-mono text-xs hover:bg-cyan-400 hover:text-black transition-all"
-          >
-            HIRE ME
-          </a>
+        <div
+          className="font-orbitron text-lg font-bold cursor-pointer gradient-text tracking-widest"
+          onClick={() => scrollTo('home')}
+        >
+          S<span className="text-white/40">.</span>DEV
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-8">
+          {links.map(link => (
+            <button
+              key={link}
+              onClick={() => scrollTo(link)}
+              className={`font-mono text-xs tracking-widest uppercase transition-all duration-300 relative group ${
+                active === link ? 'text-cyan-400' : 'text-white/50 hover:text-white'
+              }`}
+            >
+              {link}
+              <span className={`absolute -bottom-1 left-0 h-px bg-cyan-400 transition-all duration-300 ${
+                active === link ? 'w-full' : 'w-0 group-hover:w-full'
+              }`} />
+            </button>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="hidden md:flex items-center gap-4">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="font-orbitron text-xs px-5 py-2.5 rounded-lg bg-cyan-400 text-black font-bold tracking-wider"
+            style={{ boxShadow: '0 0 20px rgba(0,245,255,0.4)' }}
+            onClick={() => scrollTo('Contact')}
+          >
+            HIRE ME
+          </motion.button>
+        </div>
+
+        {/* Mobile menu toggle */}
+        <button className="md:hidden text-white/70" onClick={() => setMobileOpen(!mobileOpen)}>
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+        {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/90 backdrop-blur-lg border-b border-white/10 overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden glass mx-4 mt-2 rounded-2xl p-6 flex flex-col gap-4"
           >
-            <div className="flex flex-col items-center py-6 gap-6">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="font-space text-lg text-white hover:text-cyan-400"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
+            {links.map(link => (
+              <button
+                key={link}
+                onClick={() => scrollTo(link)}
+                className="font-mono text-sm tracking-widest uppercase text-white/70 hover:text-cyan-400 transition-colors text-left"
+              >
+                {link}
+              </button>
+            ))}
+            <button
+              className="font-orbitron text-xs px-5 py-2.5 rounded-lg bg-cyan-400 text-black font-bold"
+              onClick={() => scrollTo('Contact')}
+            >
+              HIRE ME
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

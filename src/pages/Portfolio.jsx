@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import WebGLBackground from '../components/portfolio/WebGLBackground';
 import ParticleBackground from '../components/portfolio/ParticleBackground';
 import CustomCursor from '../components/portfolio/CustomCursor';
@@ -10,6 +11,9 @@ import AboutSection from '../components/portfolio/AboutSection';
 import GoalSection from '../components/portfolio/GoalSection';
 import SkillsSection from '../components/portfolio/SkillsSection';
 import ProjectsSection from '../components/portfolio/ProjectsSection';
+import AskAISection from '../components/portfolio/AskAISection';
+import JourneySection from '../components/portfolio/JourneySection';
+import DevDepthSection from '../components/portfolio/DevDepthSection';
 import ContactSection from '../components/portfolio/ContactSection';
 import Footer from '../components/portfolio/Footer';
 import SmoothScroller from '../components/portfolio/SmoothScroller';
@@ -23,15 +27,15 @@ export default function Portfolio() {
 
       {loaded && (
         <>
-          {/* Fixed global layers */}
+          {/* Background layers */}
           <WebGLBackground />
           <ParticleBackground />
           <CustomCursor />
 
-          {/* Global R3F floating scene */}
-          <Scene3D className="fixed inset-0 z-[-1] pointer-events-none" style={{ opacity: 0.35 }} />
+          {/* 3D Scene (safe config) */}
+          <Scene3D className="fixed inset-0 z-[1] pointer-events-none" style={{ opacity: 0.35 }} />
 
-          {/* Smooth-scrolled content */}
+          {/* Main content */}
           <SmoothScroller>
             <div className="relative min-h-screen overflow-x-hidden">
               <div className="relative z-10">
@@ -41,6 +45,9 @@ export default function Portfolio() {
                 <GoalSection />
                 <SkillsSection />
                 <ProjectsSection />
+                <AskAISection />
+                <JourneySection />
+                <DevDepthSection />
                 <ContactSection />
                 <Footer />
               </div>

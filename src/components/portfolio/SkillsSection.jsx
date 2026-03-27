@@ -95,7 +95,7 @@ const techTags = [
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="relative py-36 px-6">
+    <section id="skills" className="relative py-36 px-6 scroll-mt-24">
       <div className="absolute left-0 top-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
            style={{ background: 'radial-gradient(circle, rgba(0,245,255,0.04) 0%, transparent 70%)', filter: 'blur(80px)' }} />
       <div className="absolute right-0 bottom-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"

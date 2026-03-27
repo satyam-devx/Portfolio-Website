@@ -50,7 +50,7 @@ export default function AboutSection() {
   const textRef = useScrollReveal({ threshold: 0.1, delay: 0.2 })
 
   return (
-    <section id="about" className="relative py-36 px-6">
+    <section id="about" className="relative py-36 px-6 scroll-mt-24">
       
       {/* Background glow */}
       <div className="absolute right-0 top-1/3 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"

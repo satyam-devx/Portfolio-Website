@@ -43,29 +43,29 @@ function FloatingTorus({ position, color, speed }) {
 function ParticleField() {
   const ref = useRef();
   const count = 800;
-  
+
   const positions = useMemo(() => {
-  const arr = new Float32Array(count * 3);
-  for (let i = 0; i < count; i++) {
-    arr[i * 3] = (Math.random() - 0.5) * 20;
-    arr[i * 3 + 1] = (Math.random() - 0.5) * 14;
-    arr[i * 3 + 2] = (Math.random() - 0.5) * 8 - 3;
-  }
-  return arr;
-}, []);
+    const arr = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      arr[i * 3] = (Math.random() - 0.5) * 20;
+      arr[i * 3 + 1] = (Math.random() - 0.5) * 14;
+      arr[i * 3 + 2] = (Math.random() - 0.5) * 8 - 3;
+    }
+    return arr;
+  }, []);
 
-useFrame(({ clock }) => {
-  ref.current.rotation.y = clock.getElapsedTime() * 0.04;
-});
+  useFrame(({ clock }) => {
+    ref.current.rotation.y = clock.getElapsedTime() * 0.04;
+  });
 
-return (
-  <points ref={ref}>
-    <bufferGeometry>
-      <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-    </bufferGeometry>
-    <pointsMaterial color="#00f5ff" size={0.04} opacity={0.35} transparent />
-  </points>
-);
+  return (
+    <points ref={ref}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial color="#00f5ff" size={0.04} opacity={0.35} transparent />
+    </points>
+  );
 }
 
 function DistortionRing({ radius, color, speed, axis }) {
@@ -76,6 +76,7 @@ function DistortionRing({ radius, color, speed, axis }) {
     if (axis === 'y') ref.current.rotation.y = t;
     if (axis === 'z') ref.current.rotation.z = t;
   });
+
   return (
     <mesh ref={ref}>
       <torusGeometry args={[radius, 0.008, 4, 80]} />
@@ -86,12 +87,18 @@ function DistortionRing({ radius, color, speed, axis }) {
 
 export default function Scene3D({ style, className }) {
   return (
-    <div style={style} className={className}>
+  <div 
+    style={{ pointerEvents: 'none', ...style }} 
+    className={className}
+  >
       <Canvas
-        camera={{ position: [0, 0, 7], fov: 60 }}
-        gl={{ alpha: true, antialias: true }}
-        style={{ background: 'transparent' }}
-      >
+  camera={{ position: [0, 0, 7], fov: 60 }}
+  gl={{ alpha: true, antialias: true }}
+  style={{ 
+    background: 'transparent',
+    pointerEvents: 'none'   // ✅ THIS LINE FIXES EVERYTHING
+  }}
+>
         <ParticleField />
         <FloatingSphere position={[-4, 1.5, -2]} color="#00f5ff" speed={0.6} radius={1.1} />
         <FloatingSphere position={[4.5, -1, -1.5]} color="#9b5de5" speed={0.4} radius={0.7} />
